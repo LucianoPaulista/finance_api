@@ -5,11 +5,14 @@ class ParticipantesController < ApplicationController
   # GET /participantes.json
   def index
     @participantes = Participante.all
+    render json: @participantes
   end
 
   # GET /participantes/1
   # GET /participantes/1.json
   def show
+   @participantes = Participante.find(params[:id])
+   render json: @participantes
   end
 
   # POST /participantes
@@ -37,7 +40,9 @@ class ParticipantesController < ApplicationController
   # DELETE /participantes/1
   # DELETE /participantes/1.json
   def destroy
-    @participante.destroy
+    if  @participante.destroy
+      render json: {"result": "Registro #{params[:id]} excluído com sucesso"}
+    end
   end
 
   private
