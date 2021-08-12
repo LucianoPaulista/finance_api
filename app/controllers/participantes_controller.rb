@@ -41,14 +41,25 @@ class ParticipantesController < ApplicationController
   # DELETE /participantes/1.json
   def destroy
     if  @participante.destroy
-      render json: {"result": "Registro #{params[:id]} excluído com sucesso"}
+      render json: {"result": "Registro #{params[:id]} excluído com sucesso."}
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_participante
-      @participante = Participante.find(params[:id])
+      begin
+        @participante = Participante.find(params[:id])
+      rescue ActiveRecord::RecordNotFound
+        render json: {"result": "Registro #{params[:id]} não encontrado."}
+      rescue ActiveRecord::ActiveRecordError
+        # handle other ActiveRecord errors
+      rescue # StandardError
+        # handle most other errors
+      rescue Exception
+        # handle everything else
+        raise
+      end
     end
 
     # Only allow a list of trusted parameters through.
