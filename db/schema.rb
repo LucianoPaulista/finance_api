@@ -10,10 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_11_081325) do
+ActiveRecord::Schema.define(version: 2021_08_13_084617) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "enderecos", force: :cascade do |t|
+    t.string "cep"
+    t.string "endereco"
+    t.string "endereco_nro"
+    t.string "complemento"
+    t.string "bairro"
+    t.string "cidade"
+    t.string "estado"
+    t.bigint "participante_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["participante_id"], name: "index_enderecos_on_participante_id"
+  end
 
   create_table "participantes", force: :cascade do |t|
     t.integer "tipo_pessoa"
@@ -24,4 +38,5 @@ ActiveRecord::Schema.define(version: 2021_08_11_081325) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "enderecos", "participantes"
 end
