@@ -5,11 +5,14 @@ class EnderecosController < ApplicationController
   # GET /enderecos.json
   def index
     @enderecos = Endereco.all
+    render json: @enderecos
   end
 
   # GET /enderecos/1
   # GET /enderecos/1.json
   def show
+    @enderecos = Endereco.find(params[:id])
+    render json: @enderecos
   end
 
   # POST /enderecos
@@ -43,7 +46,18 @@ class EnderecosController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_endereco
+      begin
       @endereco = Endereco.find(params[:id])
+      rescue ActiveRecord::RecordNotFound
+        render json: {"result": "Registro #{params[:id]} não encontrado."}
+      rescue ActiveRecord::ActiveRecordError
+        # handle other ActiveRecord errors
+      rescue # StandardError
+        # handle most other errors
+      rescue Exception
+        # handle everything else
+        raise
+      end
     end
 
     # Only allow a list of trusted parameters through.
