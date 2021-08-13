@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
-  resources :enderecos
   resources :participantes
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
     get 'participantes' ,to: 'participantes#index'
     get 'participantes/:id' ,to: 'participantes#show'
     post 'participantes' ,to: 'participantes#create'
     put 'participantes/:id' ,to: 'participantes#update'
     delete 'participantes/:id' ,to: 'participantes#destroy'
+
+  resources :enderecos
+    get 'enderecos' ,to: 'enderecos#index'
+    get 'enderecos/:id' ,to: 'enderecos#show'
+    post 'enderecos' ,to: 'enderecos#create'
+    put 'enderecos/:id' ,to: 'enderecos#update'
+    delete 'enderecos/:id' ,to: 'enderecos#destroy'
 end
