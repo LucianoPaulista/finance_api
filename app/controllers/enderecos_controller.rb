@@ -40,14 +40,16 @@ class EnderecosController < ApplicationController
   # DELETE /enderecos/1
   # DELETE /enderecos/1.json
   def destroy
-    @endereco.destroy
+    if @endereco.destroy
+      render json: {"result": "Registro #{params[:id]} excluído com sucesso."}
+    end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_endereco
       begin
-      @endereco = Endereco.find(params[:id])
+        @endereco = Endereco.find(params[:id])
       rescue ActiveRecord::RecordNotFound
         render json: {"result": "Registro #{params[:id]} não encontrado."}
       rescue ActiveRecord::ActiveRecordError
@@ -62,6 +64,6 @@ class EnderecosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def endereco_params
-      params.require(:endereco).permit(:cep, :endereco, :endereco_nro, :complemento, :bairro, :cidade, :estado, :participante_id)
+      params.require(:endereco).permit(:cep, :logradouro, :endereco_nro, :complemento, :bairro, :cidade, :estado, :participante_id)
     end
 end
