@@ -5,7 +5,7 @@ class ParticipantesController < ApplicationController
   # GET /participantes.json
   def index
     @participantes = Participante.all
-    render json: @participantes
+    # render json: @participantes
   end
 
   # GET /participantes/1
