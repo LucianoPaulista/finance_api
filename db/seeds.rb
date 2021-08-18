@@ -1,9 +1,7 @@
-for i in 1..9 do
-  Participante.create(tipo_pessoa: 0, nome: "Luciano Dias Paulista", cnpj_cpf: "123456789", inscricao_rg: "987654321")
-  Participante.create(tipo_pessoa: 1, nome: "Luciano Dias Paulista", cnpj_cpf: "123456789", inscricao_rg: "987654321")
+1.times do
+  participant = Participant.create(name: "Luciano", surname: "Paulista")
+  3.times do
+    @address =  Address.create(street: "Rua Maestro Antônio Guerra", zip_code: "16260000", address_number: "39", complement: "casa", state: "SP", city: "Coroados", neighborhood: "Gentil Bernardes", participant: participant)
+  end
 end
 
-for x in 1..3 do
-  Endereco.create(cep: "16260000", logradouro: "Rua Maestro Antônio Guerra", endereco_nro: "1039", complemento: "casa",
-                  bairro: "Gentil Bernardo do Prado", cidade: "Coroados", estado: "SP", participante_id: 1)
-end
