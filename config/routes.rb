@@ -1,15 +1,15 @@
 Rails.application.routes.draw do
-  resources :participantes
-    get 'participantes' ,to: 'participantes#index'
-    get 'participantes/:id' ,to: 'participantes#show'
-    post 'participantes' ,to: 'participantes#create'
-    put 'participantes/:id' ,to: 'participantes#update'
-    delete 'participantes/:id' ,to: 'participantes#destroy'
+  resources :participants
+    get 'participants' ,to: 'participants#index'
+    get 'participants/:id' ,to: 'participants#show'
+    post 'participants' ,to: 'participants#create'
+    put 'participants/:id' ,to: 'participants#update'
+    delete 'participants/:id' ,to: 'participants#destroy'
 
-  resources :enderecos
-    get 'enderecos' ,to: 'enderecos#index'
-    get 'enderecos/:id' ,to: 'enderecos#show'
-    post 'enderecos' ,to: 'enderecos#create'
-    put 'enderecos/:id' ,to: 'enderecos#update'
-    delete 'enderecos/:id' ,to: 'enderecos#destroy'
+  resources :addresses
+    get 'addresses' ,to: 'addresses#index'
+    get 'addresses/:id' ,to: 'addresses#show'
+    post 'addresses' ,to: 'addresses#create'
+    put 'addresses/:id' ,to: 'addresses#update'
+    delete 'addresses/:id' ,to: 'addresses#destroy'
 end
