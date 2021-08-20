@@ -10,6 +10,9 @@
   LowType.create(description: "Baixa Total")
   LowType.create(description: "Baixa Parcial")
   5.times{
-    Invoice.create(issuance_date: "2021-08-19", observation: "Correspondente  a Internet", total_invoice: 1000.00,  participant: participant, invoice_type: invoice_type )
+    invoice = Invoice.create(issuance_date: "2021-08-19", observation: "Correspondente  a Internet", total_invoice: 1000.00,  participant: participant, invoice_type: invoice_type )
+    for i in 1..5 do
+      installment = Installment.create(sequence: i.to_s, value: 200.00, invoice: invoice)
+    end
   }
 end
