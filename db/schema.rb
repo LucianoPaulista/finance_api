@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_19_012408) do
+ActiveRecord::Schema.define(version: 2021_08_20_011533) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,18 @@ ActiveRecord::Schema.define(version: 2021_08_19_012408) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "invoices", force: :cascade do |t|
+    t.date "issuance_date"
+    t.string "observation"
+    t.float "total_invoice"
+    t.bigint "participant_id", null: false
+    t.bigint "invoice_type_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["invoice_type_id"], name: "index_invoices_on_invoice_type_id"
+    t.index ["participant_id"], name: "index_invoices_on_participant_id"
+  end
+
   create_table "low_types", force: :cascade do |t|
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
@@ -48,4 +60,6 @@ ActiveRecord::Schema.define(version: 2021_08_19_012408) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "invoices", "invoice_types"
+  add_foreign_key "invoices", "participants"
 end

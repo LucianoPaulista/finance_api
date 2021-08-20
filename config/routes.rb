@@ -26,4 +26,11 @@ Rails.application.routes.draw do
     post 'low_types' ,to: 'low_types#create'
     put 'low_types/:id' ,to: 'low_types#update'
     delete 'low_types/:id' ,to: 'low_types#destroy'
+
+  resources :invoices
+    get 'invoices' ,to: 'invoices#index'
+    get 'invoices/:id' ,to: 'invoices#show'
+    post 'invoices' ,to: 'invoices#create'
+    put 'invoices/:id' ,to: 'invoices#update'
+    delete 'invoices/:id' ,to: 'invoices#destroy'
 end
