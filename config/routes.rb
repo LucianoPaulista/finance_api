@@ -33,4 +33,11 @@ Rails.application.routes.draw do
     post 'invoices' ,to: 'invoices#create'
     put 'invoices/:id' ,to: 'invoices#update'
     delete 'invoices/:id' ,to: 'invoices#destroy'
+
+  resources :installments
+    get 'installments' ,to: 'installments#index'
+    get 'installments/:id' ,to: 'installments#show'
+    post 'installments' ,to: 'installments#create'
+    put 'installments/:id' ,to: 'installments#update'
+    delete 'installments/:id' ,to: 'installments#destroy'
 end
