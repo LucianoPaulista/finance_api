@@ -40,4 +40,11 @@ Rails.application.routes.draw do
     post 'installments' ,to: 'installments#create'
     put 'installments/:id' ,to: 'installments#update'
     delete 'installments/:id' ,to: 'installments#destroy'
+
+  resources :low_installments
+    get 'low_installments' ,to: 'low_installments#index'
+    get 'low_installments/:id' ,to: 'low_installments#show'
+    post 'low_installments' ,to: 'low_installments#create'
+    put 'low_installments/:id' ,to: 'low_installments#update'
+    delete 'low_installments/:id' ,to: 'low_installments#destroy'
 end
