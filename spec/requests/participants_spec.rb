@@ -1,11 +1,6 @@
 require 'rails_helper'
 RSpec.describe "/participants", type: :request do
-  let(:valid_attributes) {
-    {
-      name: "Luciano",
-      surname: "Paulista"
-    }
-  }
+  let(:valid_attributes) { build(:participant).attributes}
 
   let(:invalid_attributes) {
     {
