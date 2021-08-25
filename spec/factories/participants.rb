@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :participants do
+  factory :participant do
     name {"Luciano"}
     surname {"Paulista"}
   end
