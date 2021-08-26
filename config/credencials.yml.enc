@@ -1,2 +1,2 @@
 devise:
-  jwt_secret_key: "24124112"
+  jwt_secret_key: 050e8148ed507bc0f8bdefae95cb82976a4b1fc6db2f573801215cde68917e26529930f23f9a31bf326dab59dd07b59a1b746770eb49d306bcee09ff90f4ab27
