@@ -1,0 +1,2 @@
+devise:
+  jwt_secret_key: "24124112"
