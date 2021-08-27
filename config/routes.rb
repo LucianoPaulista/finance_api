@@ -4,8 +4,14 @@ Rails.application.routes.draw do
                sessions: 'users/sessions',
                registrations: 'users/registrations'
              }
+
+  authenticated :user do
+    resources :participants
+  end
+
+
   resources :participants
-    get 'participants' ,to: 'participants#index'
+    get '/participants' ,to: 'participants#index'
     get 'participants/:id' ,to: 'participants#show'
     post 'participants' ,to: 'participants#create'
     put 'participants/:id' ,to: 'participants#update'

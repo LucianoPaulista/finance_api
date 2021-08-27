@@ -16,8 +16,8 @@ Devise.setup do |config|
   # by default. You can change it below and use your own secret key.
   # config.secret_key = 'c779a3b29e25ed22f0b14420018325fd1e95d98788e8c213c9f5f774e843cc1abe599a53773b0673705f882eb3fc9e22dbf078653f089d315153b692af13d4af'
 
-   config.jwt do |jwt|
-     jwt.secret = Rails.application.credentials.devise[:jwt_secret_key]
+  config.jwt do |jwt|
+    jwt.secret = ENV['JWT_SECRET_KEY']
   end
 
   # ==> Controller configuration
