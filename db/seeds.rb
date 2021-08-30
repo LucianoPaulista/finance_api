@@ -1,7 +1,21 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+10.times do
+  participant = Participant.create(name: "Luciano", surname: "Paulista")
+  3.times do
+    @address =  Address.create(street: "Rua Maestro Antônio Guerra", zip_code: "16260000", address_number: "39", complement: "casa", state: "SP", city: "Coroados", neighborhood: "Gentil Bernardes", participant: participant)
+  end
+  invoice_type = InvoiceType.create(description: "Contas a Pagar");
+  InvoiceType.create(description: "Contas a Receber");
+  InvoiceType.create(description: "Despesas a Pagar");
+
+  low_tipe = LowType.create(description: "Baixa Total")
+  LowType.create(description: "Baixa Parcial")
+  5.times{
+    invoice = Invoice.create(issuance_date: "2021-08-19", observation: "Correspondente  a Internet", total_invoice: 1000.00,  participant: participant, invoice_type: invoice_type )
+    for i in 1..5 do
+      installment = Installment.create(sequence: i.to_s, value: 200.00, invoice: invoice)
+      for x in 1..5 do
+        LowInstallment.create(low_date: "2021-08-20", value: 200.00, installment: installment, low_type: low_tipe )
+      end
+    end
+  }
+end

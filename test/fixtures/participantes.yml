@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tipo_pessoa: 1
+  nome: MyString
+  cnpj_cpf: MyString
+  inscricao_rg: MyString
+
+two:
+  tipo_pessoa: 1
+  nome: MyString
+  cnpj_cpf: MyString
+  inscricao_rg: MyString

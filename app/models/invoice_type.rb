@@ -1,0 +1,3 @@
+class InvoiceType < ApplicationRecord
+
+end
