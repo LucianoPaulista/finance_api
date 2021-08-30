@@ -1,14 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :users,
-             controllers: {
+  devise_for  :users,
+              # defaults: { format: :json },
+              controllers: {
                sessions: 'users/sessions',
                registrations: 'users/registrations'
              }
-
-  authenticated :user do
-    resources :participants
-  end
-
 
   resources :participants
     get '/participants' ,to: 'participants#index'
