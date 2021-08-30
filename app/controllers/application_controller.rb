@@ -1,3 +1,5 @@
 class ApplicationController < ActionController::API
-  # include ActionController::ImplicitRender
+  respond_to :json
+  include ActionController::MimeResponds
+  before_action :authenticate_user!, unless: :devise_controller?
 end

@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
+  devise_for  :users,
+              # defaults: { format: :json },
+              controllers: {
+               sessions: 'users/sessions',
+               registrations: 'users/registrations'
+             }
+
   resources :participants
-    get 'participants' ,to: 'participants#index'
+    get '/participants' ,to: 'participants#index'
     get 'participants/:id' ,to: 'participants#show'
     post 'participants' ,to: 'participants#create'
     put 'participants/:id' ,to: 'participants#update'
