@@ -48,6 +48,6 @@ class InstallmentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def installment_params
-      params.require(:installment).permit(:sequence, :value, :invoice_id)
+      params.require(:installment).permit(:code, :value, :invoice_id)
     end
 end

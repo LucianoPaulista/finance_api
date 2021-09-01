@@ -12,10 +12,11 @@
   5.times{
     invoice = Invoice.create(issuance_date: "2021-08-19", observation: "Correspondente  a Internet", total_invoice: 1000.00,  participant: participant, invoice_type: invoice_type )
     for i in 1..5 do
-      installment = Installment.create(sequence: i.to_s, value: 200.00, invoice: invoice)
+      installment = Installment.create(code: i.to_s, value: 200.00, invoice: invoice)
       for x in 1..5 do
         LowInstallment.create(low_date: "2021-08-20", value: 200.00, installment: installment, low_type: low_tipe )
       end
     end
   }
+
 end
