@@ -16,9 +16,12 @@ class InstallmentsController < ApplicationController
   # POST /installments.json
   def create
     @installment = Installment.new(installment_params)
-
-    if @installment.save
-      render :show, status: :created, location: @installment
+    erros = []
+    InstallmentsService.new(invoice: @installment.invoice, erros: erros).validate_total_installments
+    if !erros.empty?
+       render json: {"error": "#{erros}"}
+    elsif @installment.save
+       render :show, status: :created, location: @installment
     else
       render json: @installment.errors, status: :unprocessable_entity
     end
