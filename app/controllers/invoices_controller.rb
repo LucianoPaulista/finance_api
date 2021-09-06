@@ -16,8 +16,10 @@ class InvoicesController < ApplicationController
   # POST /invoices.json
   def create
     @invoice = Invoice.new(invoice_params)
-
-    if @invoice.save
+    erros = InvoiceService.new(invoice: @invoice).validate_business
+    if !erros.empty?
+      render json: {erros: erros}
+    elsif @invoice.save
       render :show, status: :created, location: @invoice
     else
       render json: @invoice.errors, status: :unprocessable_entity
